@@ -1,2 +1,3 @@
 1. how to use multiple service files in a single controller file?
 2. how to use middle-ware in the graphQL?
+3. how to get customize data from graphQL suppose no data found then how to provide empty string?
