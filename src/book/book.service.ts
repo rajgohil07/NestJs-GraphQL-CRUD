@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { BookEntity } from './book.entity';
@@ -14,6 +14,6 @@ export class BookService {
     if (data.length > 0) {
       return data;
     }
-    return { Message: 'No Data Found' };
+    throw new NotFoundException({ Message: 'No Data Found' });
   }
 }
