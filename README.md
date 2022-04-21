@@ -43,7 +43,11 @@ CRUD with GraphQL postgres using NestJs Freamwork
 
 # to create new book along with the author
 mutation {
-  createBook(bookData: { Name: "51 Days", Author: "Edward Parker" }) {
+  createBook(bookData:
+  {
+    Name: "51 Days",
+    Author: "Edward Parker"
+  }) {
     Author
     Name
   }
@@ -60,7 +64,10 @@ $ npm install
 ## Notes for the GraphQL
 
 ```bash
-# if you want to go code first then pass  autoSchemaFile: join(process.cwd(), 'src/schema.gql') in the main module under the forRoot option. also we can pass driver as ApolloDriver and playground to be true please see below for the example
+# if you want to go code first then pass  autoSchemaFile: join(process.cwd(), 'src/schema.gql')
+# in the main module under the forRoot option.
+# also we can pass driver as ApolloDriver and playground to be true
+# please see below for the example
 GraphQLModule.forRoot({
   driver: ApolloDriver,
   debug: true,
