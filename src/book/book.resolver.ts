@@ -7,7 +7,7 @@ export class BookResolver {
   constructor(private readonly bookService: BookService) {}
 
   @Query((returns) => [BookEntity])
-  findAll(): Promise<BookEntity[]> {
+  findAll(): Promise<BookEntity[] | { Message: string }> {
     return this.bookService.findAll();
   }
 }

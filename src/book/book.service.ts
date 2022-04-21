@@ -1,20 +1,19 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { BookEntity } from './book.entity';
 
 @Injectable()
 export class BookService {
-  async findAll(): Promise<BookEntity[]> {
-    return [
-      {
-        ID: 1,
-        Name: '51 Days',
-        Author: 'Edward parker',
-      },
-      {
-        ID: 2,
-        Name: '51 Days',
-        Author: 'Edward parker',
-      },
-    ];
+  constructor(
+    @InjectRepository(BookEntity)
+    private readonly bookRepository: Repository<BookEntity>,
+  ) {}
+  async findAll(): Promise<BookEntity[] | { Message: string }> {
+    const data = await this.bookRepository.find();
+    if (data.length > 0) {
+      return data;
+    }
+    return { Message: 'No Data Found' };
   }
 }

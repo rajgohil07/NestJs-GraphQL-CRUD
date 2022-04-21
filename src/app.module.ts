@@ -8,7 +8,7 @@ import { join } from 'path';
 
 @Module({
   imports: [
-    // TypeOrmModule.forRoot(PostgresDataSource),
+    TypeOrmModule.forRoot(PostgresDataSource),
     GraphQLModule.forRoot({
       driver: ApolloDriver,
       debug: true,

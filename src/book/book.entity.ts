@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity()
+@Entity({ name: 'Book' })
 @ObjectType()
 export class BookEntity {
   @PrimaryGeneratedColumn()
