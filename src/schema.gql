@@ -4,6 +4,8 @@
 
 type BookEntity {
   ID: Int!
+  Name: String!
+  Author: String!
 }
 
 type Query {

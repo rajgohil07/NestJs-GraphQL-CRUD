@@ -5,7 +5,9 @@ export class BookEntity {
   @Field((type) => Int)
   ID: number;
 
+  @Field()
   Name: string;
 
+  @Field()
   Author: string;
 }
