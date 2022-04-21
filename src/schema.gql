@@ -18,3 +18,12 @@ scalar DateTime
 type Query {
   findAll: [BookEntity!]!
 }
+
+type Mutation {
+  createBook(bookData: createBook!): BookEntity!
+}
+
+input createBook {
+  Name: String!
+  Author: String!
+}
