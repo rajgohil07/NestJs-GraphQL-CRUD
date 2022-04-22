@@ -12,4 +12,5 @@ export const PostgresDataSource: PostgresConnectionOptions = {
   type: 'postgres',
   entities: [BookEntity],
   synchronize: true,
+  logging: ['query', 'error', 'schema', 'migration', 'warn'],
 };
