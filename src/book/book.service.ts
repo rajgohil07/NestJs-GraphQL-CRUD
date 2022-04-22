@@ -38,9 +38,18 @@ export class BookService {
   }
 
   async deleteBookByID(ID: number): Promise<{ deletedRecordCount: number }> {
+    // validate weather the given book exist or not
     await this.findBookByID(ID);
     const deletedData = await this.bookRepository.delete({ ID });
-    console.log(deletedData);
     return { deletedRecordCount: deletedData.affected };
+  }
+
+  async updateBookByID(
+    ID: number,
+    updateBookByID: createBook,
+  ): Promise<BookEntity> {
+    // validate weather the given book exist or not
+    await this.findBookByID(ID);
+    return this.bookRepository.preload({ ID, ...updateBookByID });
   }
 }

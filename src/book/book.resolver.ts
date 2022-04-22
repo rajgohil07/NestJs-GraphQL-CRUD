@@ -34,4 +34,12 @@ export class BookResolver {
   ): Promise<{ deletedRecordCount: number }> {
     return this.bookService.deleteBookByID(ID);
   }
+
+  @Mutation(() => BookEntity)
+  updateBookByID(
+    @Args('ID', { type: () => Int }) ID: number,
+    @Args('updateBookData') updateBookData: createBook,
+  ): Promise<BookEntity> {
+    return this.bookService.updateBookByID(ID, updateBookData);
+  }
 }

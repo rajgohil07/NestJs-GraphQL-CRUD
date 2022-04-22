@@ -27,6 +27,7 @@ type Query {
 type Mutation {
   createBook(bookData: createBook!): BookEntity!
   deleteBookByID(ID: Int!): deleteUserByID!
+  updateBookByID(ID: Int!, updateBookData: createBook!): BookEntity!
 }
 
 input createBook {
