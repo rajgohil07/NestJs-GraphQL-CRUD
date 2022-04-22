@@ -1,8 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindOneOptions, Repository } from 'typeorm';
+import { DeleteResult, Repository } from 'typeorm';
 import { BookEntity } from './book.entity';
 import { createBook } from './dto/createBook';
+import { deleteUserByID } from './dto/deletedUserID';
 
 @Injectable()
 export class BookService {
@@ -26,6 +27,7 @@ export class BookService {
     return this.bookRepository.save(dataToBeCreated);
   }
 
+  // find book by provided book id
   async findBookByID(ID: number): Promise<BookEntity> {
     const data = await this.bookRepository.findOne({
       where: { ID },
@@ -34,5 +36,12 @@ export class BookService {
       return data;
     }
     throw new NotFoundException('Specified book does not exist!');
+  }
+
+  async deleteBookByID(ID: number): Promise<{ deletedRecordCount: number }> {
+    await this.findBookByID(ID);
+    const deletedData = await this.bookRepository.delete({ ID });
+    console.log(deletedData);
+    return { deletedRecordCount: deletedData.affected };
   }
 }

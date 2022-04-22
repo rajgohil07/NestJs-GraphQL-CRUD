@@ -66,6 +66,14 @@ mutation {
     Author
   }
 }
+
+# delete book specified by id
+mutation {
+  deleteBookByID(ID: 5) {
+    deletedRecordCount
+  }
+}
+
 ```
 
 ## Installation

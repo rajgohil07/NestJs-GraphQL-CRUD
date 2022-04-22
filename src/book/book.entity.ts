@@ -11,15 +11,15 @@ import {
 @ObjectType()
 export class BookEntity {
   @PrimaryGeneratedColumn()
-  @Field((type) => Int)
+  @Field(() => Int)
   ID: number;
 
   @CreateDateColumn()
-  @Field((type) => Date)
+  @Field(() => Date)
   CreatedDate: Date;
 
   @UpdateDateColumn()
-  @Field((type) => Date)
+  @Field(() => Date)
   UpdatedDate: Date;
 
   @Column()
