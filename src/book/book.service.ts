@@ -37,6 +37,7 @@ export class BookService {
     throw new NotFoundException('Specified book does not exist!');
   }
 
+  // delete the book provided by id
   async deleteBookByID(ID: number): Promise<{ deletedRecordCount: number }> {
     // validate weather the given book exist or not
     await this.findBookByID(ID);
@@ -44,12 +45,17 @@ export class BookService {
     return { deletedRecordCount: deletedData.affected };
   }
 
+  // update book provided by id
   async updateBookByID(
     ID: number,
     updateBookByID: createBook,
   ): Promise<BookEntity> {
     // validate weather the given book exist or not
     await this.findBookByID(ID);
-    return this.bookRepository.preload({ ID, ...updateBookByID });
+    const dataToBeUpdated = await this.bookRepository.preload({
+      ID,
+      ...updateBookByID,
+    });
+    return this.bookRepository.save(dataToBeUpdated);
   }
 }
