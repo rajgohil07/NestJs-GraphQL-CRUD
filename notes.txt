@@ -9,3 +9,5 @@
 5. you can create entity in which graphQL can create schema itself
 6. if you want to go code first then pass  autoSchemaFile: join(process.cwd(), 'src/schema.gql') in the main module 
    under the forRoot option. also we can pass driver as ApolloDriver and playground to be true
+7. we can even create the CRUD operation by generating the resource command
+   example => nest g resource resource_name   

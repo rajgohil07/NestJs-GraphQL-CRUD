@@ -29,6 +29,11 @@ CRUD with GraphQL postgres using NestJs Freamwork
   npx nest g module module_name
 ```
 
+```bash
+# we can even create the CRUD operation by generating the resource command
+  npx nest g resource resource_name
+```
+
 ## GraphQL Queries
 
 ```bash
