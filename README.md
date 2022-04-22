@@ -58,12 +58,20 @@ mutation {
   }
 }
 
+# to find book specified by id
+{
+  findBookByID(ID: 1) {
+    ID
+    Name
+    Author
+  }
+}
 ```
 
 ## Installation
 
 ```bash
-$ npm install
+npm install
 ```
 
 ## Notes for the GraphQL
@@ -85,11 +93,11 @@ GraphQLModule.forRoot({
 
 ```bash
 # development
-$ npm run start
+npm run start
 
 # watch mode
-$ npm run start:dev
+npm run start:dev
 
 # production mode
-$ npm run start:prod
+npm run start:prod
 ```
