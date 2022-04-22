@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindOneOptions, Repository } from 'typeorm';
 import { BookEntity } from './book.entity';
 import { createBook } from './dto/createBook';
 
@@ -17,12 +17,22 @@ export class BookService {
     if (data.length > 0) {
       return data;
     }
-    throw new NotFoundException({ Message: 'No Data Found' });
+    throw new NotFoundException('No Data Found');
   }
 
   // create new book Data
   async createBook(bookData: createBook): Promise<BookEntity> {
     const dataToBeCreated = this.bookRepository.create(bookData);
     return this.bookRepository.save(dataToBeCreated);
+  }
+
+  async findBookByID(ID: number): Promise<BookEntity> {
+    const data = await this.bookRepository.findOne({
+      where: { ID },
+    });
+    if (data) {
+      return data;
+    }
+    throw new NotFoundException('Specified book does not exist!');
   }
 }

@@ -17,6 +17,7 @@ scalar DateTime
 
 type Query {
   findAll: [BookEntity!]!
+  findBookByID(ID: Int!): BookEntity!
 }
 
 type Mutation {
