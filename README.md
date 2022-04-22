@@ -43,6 +43,7 @@ CRUD with GraphQL postgres using NestJs Freamwork
     ID
     Author
     Name
+    UpdatedDate
   }
 }
 
@@ -71,6 +72,21 @@ mutation {
 mutation {
   deleteBookByID(ID: 5) {
     deletedRecordCount
+  }
+}
+
+# update the book specified by the id
+mutation {
+  updateBookByID(
+    ID: 11
+    updateBookData:
+    {
+       Name: "Autobiography",
+       Author: "Raj Gohil"
+    }
+  ) {
+    Name
+    Author
   }
 }
 
